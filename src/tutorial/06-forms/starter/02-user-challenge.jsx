@@ -7,13 +7,19 @@ const UserChallenge = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newPerson = { ...people, name };
-    setPeople(newPerson);
+
+    if (!name) return;
+    const fakeId = Date.now();
+    const newPerson = {
+      id: fakeId,
+      name,
+    };
+    setPeople([...people, newPerson]);
+    setName("");
   };
 
   const removeUser = (id) => {
     const newList = people.filter((person) => person.id != id);
-    console.log(`User with id: ${id} is removed!`);
     setPeople(newList);
   };
 
@@ -40,6 +46,7 @@ const UserChallenge = () => {
       </form>
 
       {/* render users below */}
+      <h2>Users</h2>
       {people.map((person) => {
         const { id, name } = person;
         return (
