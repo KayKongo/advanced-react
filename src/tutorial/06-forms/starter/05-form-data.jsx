@@ -9,15 +9,20 @@ const UncontrolledInputs = () => {
     // Initialise the FormData API
     const formData = new FormData(e.currentTarget);
 
+    // Check to see if user is submitting empty fields
+
     // How to get a value using a key ("name" should be set in the input/select fields) from FormData
-    const name = formData.get("name");
+    // const name = formData.get("name");
 
     // Displaying the entries of the FormData
-    console.log([...formData.entries()]);
+    // console.log([...formData.entries()]);
 
     // COnverting FormData (which is an array of arrays) into objects -- some servers want JSON only
-    const objectData = Object.fromEntries(formData);
-    console.log(objectData);
+    const newUser = Object.fromEntries(formData);
+    console.log(newUser);
+    setValue(value + 1);
+
+    e.currentTarget.reset();
   };
   return (
     <div>
