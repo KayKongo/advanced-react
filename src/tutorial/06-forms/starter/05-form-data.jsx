@@ -7,7 +7,7 @@ const UncontrolledInputs = () => {
     e.preventDefault();
 
     // Initialise the FormData API
-    const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget); // event.target refers to the DOM element that triggers an event | e.currentTarget refers to the DOM element that event listener is listening on.
 
     // Check to see if user is submitting empty fields
 
@@ -20,10 +20,12 @@ const UncontrolledInputs = () => {
     // COnverting FormData (which is an array of arrays) into objects -- some servers want JSON only
     const newUser = Object.fromEntries(formData);
     console.log(newUser);
-    setValue(value + 1);
 
+    // Update the state value and use the `e.currentTarget.reset()` method to clear out the form after a submission's re-render.
+    setValue(value + 1);
     e.currentTarget.reset();
   };
+
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
@@ -63,3 +65,10 @@ const UncontrolledInputs = () => {
   );
 };
 export default UncontrolledInputs;
+
+// const [value, setValue] = useState(0);
+// const formData = new FormData(e.curretTarget);
+// const newUser = Object.fromEntries(formData);
+// console.log(newUser);
+// setValue(value + 1);
+// e.currentTarget.reset();
