@@ -33,4 +33,8 @@ const LowerState = () => {
     </section>
   );
 };
+
 export default LowerState;
+
+// useCallback memoizes an expensive function
+// useMemo memoizes a value or a function that returns a value (especially when the function contains an expensive calculation that you don't want to call too frequently)
